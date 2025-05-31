@@ -15,6 +15,8 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
+
 import java.util.List;
 
 public class ProfileActivity extends AppCompatActivity {
@@ -89,7 +91,8 @@ public class ProfileActivity extends AppCompatActivity {
     }
 
     private void showChangeUsernameDialog() {
-        android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(this);
+        MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(this);
+
         builder.setTitle(getString(R.string.change_username));
 
         final View customLayout = getLayoutInflater().inflate(R.layout.dialog_change_username, null);
@@ -116,6 +119,7 @@ public class ProfileActivity extends AppCompatActivity {
         builder.setNegativeButton(getString(android.R.string.cancel), null);
         builder.show();
     }
+
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {

@@ -33,6 +33,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        if (SessionManager.getInstance().getUserId() == -1) {
+            startActivity(new Intent(this, LoginActivity.class));
+            finish();
+            return;
+        }
+        setContentView(R.layout.activity_main);
+
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
