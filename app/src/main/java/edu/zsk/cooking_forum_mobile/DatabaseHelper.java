@@ -84,7 +84,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    // Helper method to safely get column index
     private int getColumnIndex(Cursor cursor, String columnName) {
         int index = cursor.getColumnIndex(columnName);
         if (index == -1) {
@@ -93,7 +92,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return index;
     }
 
-    // User methods
     public boolean addUser(String username, String password, String email) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -173,7 +171,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
     }
 
-    // Recipe methods
     public long addRecipe(String title, String description, String ingredients,
                           String instructions, String category, int userId) {
         SQLiteDatabase db = this.getWritableDatabase();
@@ -323,7 +320,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
     }
 
-    // Like methods
     public boolean addLike(int userId, int recipeId) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();

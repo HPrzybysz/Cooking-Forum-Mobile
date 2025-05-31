@@ -47,7 +47,7 @@ public class CreateRecipeActivity extends AppCompatActivity {
             return;
         }
 
-        int userId = SessionManager.getInstance().getUserId();
+        int userId = SessionManager.getInstance(getApplicationContext()).getUserId();
         long result = databaseHelper.addRecipe(title, description, ingredients, instructions, category, userId);
 
         if (result != -1) {

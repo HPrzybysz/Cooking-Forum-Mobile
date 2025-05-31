@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -34,7 +33,7 @@ public class RecipeDetailActivity extends AppCompatActivity {
             return;
         }
 
-        int userId = SessionManager.getInstance().getUserId();
+        int userId = SessionManager.getInstance(this).getUserId();
         isLiked = databaseHelper.isRecipeLiked(userId, recipeId);
         int likeCount = databaseHelper.getLikeCount(recipeId);
 
@@ -67,7 +66,7 @@ public class RecipeDetailActivity extends AppCompatActivity {
     }
 
     private void toggleLike() {
-        int userId = SessionManager.getInstance().getUserId();
+        int userId = SessionManager.getInstance(this).getUserId();
 
         if (isLiked) {
             databaseHelper.removeLike(userId, recipe.getId());

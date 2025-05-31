@@ -1,5 +1,7 @@
 package edu.zsk.cooking_forum_mobile;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.List;
 
 import retrofit2.Call;
@@ -11,6 +13,7 @@ public interface ApiService {
 }
 
 class CategoriesResponse {
+    @SerializedName("categories")
     private List<Category> categories;
 
     public List<Category> getCategories() {

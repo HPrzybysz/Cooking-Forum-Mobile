@@ -1,17 +1,25 @@
 package edu.zsk.cooking_forum_mobile;
 
 public class Category {
-    private String name;
+    private String strCategory;
+    private String strCategoryThumb;
+    private String strCategoryDescription;
 
-    public Category(String name) {
-        this.name = name;
+    public Category(String strCategory, String strCategoryThumb, String strCategoryDescription) {
+        this.strCategory = strCategory;
+        this.strCategoryThumb = strCategoryThumb;
+        this.strCategoryDescription = strCategoryDescription;
     }
 
-    public String getName() {
-        return name;
+    public String getStrCategory() {
+        return strCategory;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public String getStrCategoryThumb() {
+        return strCategoryThumb;
+    }
+
+    public String getStrCategoryDescription() {
+        return strCategoryDescription;
     }
 }

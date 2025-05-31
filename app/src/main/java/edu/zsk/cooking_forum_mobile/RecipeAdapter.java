@@ -39,7 +39,7 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeView
         holder.tvDescription.setText(recipe.getDescription());
         holder.tvCategory.setText("Category: " + recipe.getCategory());
 
-        int userId = SessionManager.getInstance().getUserId();
+        int userId = SessionManager.getInstance(context.getApplicationContext()).getUserId();
         boolean isLiked = databaseHelper.isRecipeLiked(userId, recipe.getId());
         int likeCount = databaseHelper.getLikeCount(recipe.getId());
 

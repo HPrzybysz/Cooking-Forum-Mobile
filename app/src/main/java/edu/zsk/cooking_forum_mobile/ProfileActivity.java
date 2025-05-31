@@ -37,7 +37,7 @@ public class ProfileActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         databaseHelper = new DatabaseHelper(this);
-        int userId = SessionManager.getInstance().getUserId();
+        int userId = SessionManager.getInstance(this).getUserId();
         String username = databaseHelper.getUsername(userId);
 
         tvUsername = findViewById(R.id.tvUsername);
@@ -79,14 +79,12 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });
 
-        btnLogout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                SessionManager.getInstance().setUserId(-1);
-                Intent intent = new Intent(ProfileActivity.this, LoginActivity.class);
-                startActivity(intent);
-                finishAffinity();
-            }
+        btnLogout.setOnClickListener(v -> {
+            SessionManager.getInstance(getApplicationContext()).clearSession();
+            Intent intent = new Intent(ProfileActivity.this, LoginActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
+            finish();
         });
     }
 
@@ -107,7 +105,7 @@ public class ProfileActivity extends AppCompatActivity {
                 return;
             }
 
-            int userId = SessionManager.getInstance().getUserId();
+            int userId = SessionManager.getInstance(this).getUserId();
             if (databaseHelper.updateUsername(userId, newUsername)) {
                 tvUsername.setText(newUsername);
                 Toast.makeText(this, getString(R.string.username_updated), Toast.LENGTH_SHORT).show();
