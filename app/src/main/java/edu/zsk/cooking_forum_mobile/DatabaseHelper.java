@@ -71,7 +71,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 + "UNIQUE(" + COLUMN_USER_ID_FK + ", " + COLUMN_RECIPE_ID_FK + ")" + ")";
         db.execSQL(CREATE_LIKES_TABLE);
 
-        // Add indexes for better performance
         db.execSQL("CREATE INDEX idx_user_id ON " + TABLE_RECIPES + "(" + COLUMN_USER_ID_FK + ")");
         db.execSQL("CREATE INDEX idx_recipe_id ON " + TABLE_LIKES + "(" + COLUMN_RECIPE_ID_FK + ")");
     }
